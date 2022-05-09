@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "ug4JTBxouXUGCb/UeBzlcJDODzKzoSQDcfFF2kply9rwPYeCoMH4s4rFzSpp7YokwtqLVy4Xqx2qzUnB26bYLw==",
+  "success": true,
+  "projectFilePath": "/Users/renan.sies/Develop/ContosoPizza/ContosoPizza.csproj",
+  "expectedPackageFiles": [
+    "/Users/renan.sies/.nuget/packages/microsoft.extensions.apidescription.server/3.0.0/microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "/Users/renan.sies/.nuget/packages/microsoft.openapi/1.2.3/microsoft.openapi.1.2.3.nupkg.sha512",
+    "/Users/renan.sies/.nuget/packages/swashbuckle.aspnetcore/6.2.3/swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
+    "/Users/renan.sies/.nuget/packages/swashbuckle.aspnetcore.swagger/6.2.3/swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
+    "/Users/renan.sies/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.2.3/swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
+    "/Users/renan.sies/.nuget/packages/swashbuckle.aspnetcore.swaggerui/6.2.3/swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512"
+  ],
+  "logs": []
+}

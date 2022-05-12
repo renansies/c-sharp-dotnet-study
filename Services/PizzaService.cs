@@ -1,45 +1,46 @@
 using ContosoPizza.Models;
+using ContosoPizza.Data;
 
 namespace ContosoPizza.Services;
 
-public static class PizzaService
+public class PizzaService
 {
-    static List<Pizza> Pizzas { get; }
-    static int nextId = 3;
-    static PizzaService()
+
+    private readonly PizzaContext _context;
+
+    public PizzaService(PizzaContext context) 
     {
-        Pizzas = new List<Pizza>
-        {
-            new Pizza { Id = 1, Name = "Classic Italian", IsGlutenFree = false },
-            new Pizza { Id = 2, Name = "Veggie", IsGlutenFree = true }
-        };
+        this._context = context;
+    }
+    public List<Pizza> GetAll() 
+    {
+        return _context.Pizzas.ToList();
+    } 
+
+    public Pizza? Get(int id) => _context.Pizzas.FirstOrDefault(p => p.Id == id);
+
+    public void Add(Pizza pizza)
+    {
+        Console.WriteLine($"{pizza.Name}\n{pizza.IsGlutenFree}");
+        _context.Add<Pizza>(pizza);
+        var id = _context.SaveChanges();
+        Console.WriteLine(id);
     }
 
-    public static List<Pizza> GetAll() => Pizzas;
-
-    public static Pizza? Get(int id) => Pizzas.FirstOrDefault(p => p.Id == id);
-
-    public static void Add(Pizza pizza)
-    {
-        pizza.Id = nextId++;
-        Pizzas.Add(pizza);
-    }
-
-    public static void Delete(int id)
+    public void Delete(int id)
     {
         var pizza = Get(id);
         if(pizza is null)
             return;
 
-        Pizzas.Remove(pizza);
+        _context.Pizzas.Remove(pizza);
     }
 
-    public static void Update(Pizza pizza)
+    public void Update(Pizza pizza)
     {
-        var index = Pizzas.FindIndex(p => p.Id == pizza.Id);
-        if(index == -1)
+        var checkPizza = Get(pizza.Id);
+        if(checkPizza == null)
             return;
-
-        Pizzas[index] = pizza;
+        _context.Pizzas.Update(pizza);
     }
 }

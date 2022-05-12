@@ -1,23 +1,32 @@
 using ContosoPizza.Models;
 using ContosoPizza.Services;
 using Microsoft.AspNetCore.Mvc;
+using Controller = Microsoft.AspNetCore.Mvc.Controller;
+using Get = Microsoft.AspNetCore.Mvc.HttpGetAttribute;
+using Post = Microsoft.AspNetCore.Mvc.HttpPostAttribute;
+using Put = Microsoft.AspNetCore.Mvc.HttpPutAttribute;
+using Delete = Microsoft.AspNetCore.Mvc.HttpDeleteAttribute;
 
 namespace ContosoPizza.Controllers;
 
-[ApiController]
 [Route("[controller]")]
-public class PizzaController : ControllerBase
+public class PizzaController : Controller
 {
-    public PizzaController(){}
 
-    [HttpGet]
-    public ActionResult<List<Pizza>> GetAll() =>
-        PizzaService.GetAll();
+    private readonly PizzaService _pizzaService;
+    public PizzaController(PizzaService pizzaService){
+        _pizzaService = pizzaService;
+    }
 
-    [HttpGet("{id}")]
+    [Get]
+    public List<Pizza> GetAll() {
+        return _pizzaService.GetAll();
+    }
+
+    [Get("{id}")]
     public ActionResult<Pizza> Get(int id)
     {
-        var pizza = PizzaService.Get(id);
+        var pizza = _pizzaService.Get(id);
 
         if(pizza == null)
             return NotFound();
@@ -25,37 +34,37 @@ public class PizzaController : ControllerBase
         return pizza;
     }
 
-    [HttpPost]
-    public IActionResult Create(Pizza pizza)
+    [Post]
+    public IActionResult Create([FromBody]Pizza pizza)
     {            
-        PizzaService.Add(pizza);
+        _pizzaService.Add(pizza);
         return CreatedAtAction(nameof(Create), new { id = pizza.Id }, pizza);
     }
 
-    [HttpPut("{id}")]
+    [Put("{id}")]
     public IActionResult Update(int id, Pizza pizza)
     {
         if (id != pizza.Id)
             return BadRequest();
             
-        var existingPizza = PizzaService.Get(id);
+        var existingPizza = _pizzaService.Get(id);
         if(existingPizza is null)
             return NotFound();
     
-        PizzaService.Update(pizza);           
+        _pizzaService.Update(pizza);           
     
         return NoContent();
     }
 
-    [HttpDelete("{id}")]
+    [Delete("{id}")]
     public IActionResult Delete(int id)
     {
-        var pizza = PizzaService.Get(id);
+        var pizza = _pizzaService.Get(id);
     
         if (pizza is null)
             return NotFound();
         
-        PizzaService.Delete(id);
+        _pizzaService.Delete(id);
     
         return NoContent();
     }

@@ -1,6 +1,6 @@
 using ContosoPizza.Data;
 using ContosoPizza.Services;
-using Microsoft.AspNetCore;
+using Honeycomb.OpenTelemetry;
 using Microsoft.EntityFrameworkCore;
 
 namespace ContosoPizza
@@ -12,10 +12,12 @@ namespace ContosoPizza
             var builder = WebApplication.CreateBuilder(args);
             // Add services to the container.
             builder.Services.AddDbContext<PizzaContext>(options =>
-                    options.UseSqlServer(builder.Configuration.GetConnectionString("PizzaContext"), builder =>
+                    options.UseNpgsql(builder.Configuration.GetConnectionString("PizzaContext"), builder =>
                         builder.MigrationsAssembly("ContosoPizza")));
             builder.Services.AddScoped<PizzaService, PizzaService>();
             builder.Services.AddControllers();
+            builder.Services.AddHoneycomb(builder.Configuration);
+            
             builder.Logging.AddJsonConsole();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();

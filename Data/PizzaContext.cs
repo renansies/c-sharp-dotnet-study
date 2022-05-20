@@ -1,4 +1,3 @@
-using System;
 using ContosoPizza.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,7 +10,7 @@ namespace ContosoPizza.Data
         {
         }
 
-        public DbSet<Pizza>? Pizzas { get; set; }
+        public DbSet<Pizza>? Pizza { get; set; }
 
     }
 }

@@ -27,7 +27,7 @@ namespace ContosoPizza
             });
 
             services.AddDbContext<PizzaContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("PizzaContext"), builder =>
+                    options.UseNpgsql(Configuration.GetConnectionString("PizzaContext"), builder =>
                         builder.MigrationsAssembly("ContosoPizza")));
 
             services.AddScoped<PizzaService>();

@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/Users/renan.sies/Develop/ContosoPizza/ContosoPizza.csproj": {}
+    "C:\\Users\\renan\\Develop\\c-sharp-dotnet-study\\ContosoPizza.csproj": {}
   },
   "projects": {
-    "/Users/renan.sies/Develop/ContosoPizza/ContosoPizza.csproj": {
+    "C:\\Users\\renan\\Develop\\c-sharp-dotnet-study\\ContosoPizza.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/renan.sies/Develop/ContosoPizza/ContosoPizza.csproj",
+        "projectUniqueName": "C:\\Users\\renan\\Develop\\c-sharp-dotnet-study\\ContosoPizza.csproj",
         "projectName": "ContosoPizza",
-        "projectPath": "/Users/renan.sies/Develop/ContosoPizza/ContosoPizza.csproj",
-        "packagesPath": "/Users/renan.sies/.nuget/packages/",
-        "outputPath": "/Users/renan.sies/Develop/ContosoPizza/obj/",
+        "projectPath": "C:\\Users\\renan\\Develop\\c-sharp-dotnet-study\\ContosoPizza.csproj",
+        "packagesPath": "C:\\Users\\renan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\renan\\Develop\\c-sharp-dotnet-study\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/Users/renan.sies/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\renan\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -38,6 +38,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Honeycomb.OpenTelemetry": {
+              "target": "Package",
+              "version": "[0.21.0-beta, )"
+            },
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
               "version": "[6.0.5, )"
@@ -48,15 +52,15 @@
               "target": "Package",
               "version": "[6.0.5, )"
             },
-            "Microsoft.EntityFrameworkCore.SqlServer": {
-              "target": "Package",
-              "version": "[6.0.5, )"
-            },
             "Microsoft.EntityFrameworkCore.Tools": {
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
               "version": "[6.0.5, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[6.0.4, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
@@ -81,7 +85,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.202/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.300\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -14,14 +14,14 @@ public class PizzaService
     }
     public List<Pizza> GetAll() 
     {
-        return _context.Pizzas.ToList();
+        return _context.Pizza.ToList();
     } 
 
-    public Pizza? Get(int id) => _context.Pizzas.FirstOrDefault(p => p.Id == id);
+    public Pizza? Get(int id) => _context.Pizza.FirstOrDefault(p => p.id == id);
 
     public void Add(Pizza pizza)
     {
-        Console.WriteLine($"{pizza.Name}\n{pizza.IsGlutenFree}");
+        Console.WriteLine($"{pizza.name}\n{pizza.isGlutenFree}");
         _context.Add<Pizza>(pizza);
         var id = _context.SaveChanges();
         Console.WriteLine(id);
@@ -33,14 +33,14 @@ public class PizzaService
         if(pizza is null)
             return;
 
-        _context.Pizzas.Remove(pizza);
+        _context.Pizza.Remove(pizza);
     }
 
     public void Update(Pizza pizza)
     {
-        var checkPizza = Get(pizza.Id);
+        var checkPizza = Get(pizza.id);
         if(checkPizza == null)
             return;
-        _context.Pizzas.Update(pizza);
+        _context.Pizza.Update(pizza);
     }
 }

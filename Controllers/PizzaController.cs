@@ -38,13 +38,13 @@ public class PizzaController : Controller
     public IActionResult Create([FromBody]Pizza pizza)
     {            
         _pizzaService.Add(pizza);
-        return CreatedAtAction(nameof(Create), new { id = pizza.Id }, pizza);
+        return CreatedAtAction(nameof(Create), new { id = pizza.id }, pizza);
     }
 
     [Put("{id}")]
     public IActionResult Update(int id, Pizza pizza)
     {
-        if (id != pizza.Id)
+        if (id != pizza.id)
             return BadRequest();
             
         var existingPizza = _pizzaService.Get(id);
